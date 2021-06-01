@@ -1,0 +1,22 @@
+@mixin btn-color($color: $primary-dark-cyan) {
+    border-radius: 25px;
+    background-color: $color;
+    color: white;
+    padding: 15px 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    height: 50px;
+}
+
+@mixin flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin box {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+}

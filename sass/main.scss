@@ -1,0 +1,441 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700&display=swap');
+@import "./mixins.scss";
+@import "./variables.scss";
+
+// ---------------- GENERALS PARAMETERS -------------- //
+
+body{
+    margin: 0;
+    font-family: 'Commissioner', sans-serif;
+    background-image: url(../images/image-hero-desktop.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-color: $bg-color;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+button{
+    outline: 0;
+    border: none;
+}
+
+h1, h2, h3{
+    color: $neutral-black;
+    font-weight: 700;
+}
+
+h3, h2{
+    margin-top: 0;
+}
+
+h3{
+    margin-top: 3px;
+    margin-right: 15px;
+}
+
+p{
+    color: $neutral-dark-grey;
+    line-height: 30px;
+}
+
+main{
+    width: 720px;
+}
+
+span{
+    font-weight: 700;
+    color: $neutral-black;
+}
+
+header, .objectif, .container-project{
+    background-color: white;
+    border: solid 1px $border-color;
+    border-radius: 10px;
+    padding: 40px;
+    margin-bottom: 20px;
+}
+
+label{
+    cursor: pointer;
+}
+
+//---------------- NAV ---------------//
+
+nav{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+
+    ul{
+        color: white;
+        font-weight: 700;
+        display: flex;
+
+        li{
+            margin-left: 30px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        li a::after{
+            content: "";
+            width: 0;
+            height: 2px;
+            background-color: white;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        li a:hover::after{
+            width: 100%;
+            transition: width 0.3s;
+        }
+    }
+}
+
+
+//------------------ HEADER -----------------//
+
+header{
+    position: relative;
+    margin-top: 200px;
+    p img{
+        position: absolute;
+        top: -12%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    h1, p{
+        text-align: center;
+    }
+
+    .header_btn{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn_checked{
+        border-radius: 25px;
+        padding: 15px 20px 15px 60px;
+        font-weight: 700;
+        color: $primary-dark-cyan;
+        position: relative;
+        letter-spacing: 1px;
+        cursor: pointer;
+
+        img{
+            position: absolute;
+            width: 46px;
+            left: 0%;
+            top: 0%;
+            filter : hue-rotate(50deg);
+
+        }
+    }
+}
+
+//------------ OBJECTIF NUMBERS ---------------// 
+
+.objectif{
+    &_numbers{
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+
+        p{
+            margin-right: 15%;
+        }
+
+        p:not(:last-child)::after{
+            content: "";
+            background-color: $neutral-dark-grey;
+            width: 1px;
+            height: 65%;
+            position: absolute;
+            margin-left: 30px;
+            top: 0;
+            transform: translateY(20%);
+        }
+    }
+
+    span{
+        font-size: 28px;
+    }
+
+    &_progressbar{
+        width: 100%;
+        height: 10px;
+        background-color: $bg-color;
+        border-radius: 10px;
+        margin-top: 20px;
+        position: relative;
+
+        &::before{
+            content: "";
+            background-color: $primary-modarate-cyan;
+            // width: 0%;
+            width: $percentage-collected + 0%;
+            height: 10px;
+            border-radius: 10px;
+            position: absolute;
+        }
+    }
+}
+
+
+//---------------- CARD --------------// 
+.card{
+    border-radius: 10px;
+    border: solid 2px $border-color-dark;
+    margin: 20px 0;
+    padding: 25px;
+
+    &_top{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    
+        &--green{
+            color: $primary-modarate-cyan;
+            margin-top: 6px;
+        }
+    }
+
+    &_bottom{
+        display: flex;
+        justify-content: space-between;
+
+        p{
+            margin-top: 10px;
+            position: relative;
+        }
+    }
+
+    span{
+        font-size: 32px;
+    }
+
+
+    &:last-of-type{
+        opacity: 0.5;
+    }
+}
+
+.btn{
+    &_green{
+        @include btn-color($primary-modarate-cyan);
+    }
+    &_dark-green{
+        @include btn-color();
+    }
+    &_grey{
+        @include btn-color($neutral-dark-grey);
+    }
+}
+
+.showblock{
+    display: block;
+}
+
+.showflex{
+    display: flex;
+}
+
+.hide{
+    display: none;
+}
+
+// MODAL PLEDGE SELECTION //
+
+.pledge-selection_wrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    &::before{
+        content: "";
+        background-color: $neutral-dark-grey;
+        opacity: .3;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        bottom: 0;
+    }
+}
+
+.pledge-selection{
+    @include box;
+    position: absolute;
+    width: 700px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    
+    &_card:nth-of-type(1){
+        display: flex;
+    }
+    
+    h2{
+        margin-top: 20px;
+    }
+    
+    .imgclose > img{
+        position: absolute;
+        left: 94%;
+        top: 2%;
+        cursor: pointer;
+    }
+    
+    h3:hover{
+        color: $primary-modarate-cyan;
+        cursor: pointer;
+    }
+    
+    // CHECKBOX //
+    
+    .checkbox{
+        width: 40px;
+        height: 40px;
+    }
+    
+    &_card input[type="checkbox"]{
+        margin-top: 12px;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        padding: 5px;
+        border-radius: 50%;
+        border: solid 1px $neutral-dark-grey;
+    }
+    
+    &_card input[type="checkbox"]:checked{
+        appearance: none;
+        background: $primary-modarate-cyan 50% center;
+        box-shadow: 0px 0px 0px 5px #fff inset; 
+    }
+    
+    .pledge-description{
+        display: flex;
+    }
+    
+    .content{
+        margin-left: 20px;
+        position: relative;
+    }
+    
+    .content p:last-of-type:not(p:nth-of-type(1)){
+        position: absolute;
+        right: 5%;
+        top: -10px;
+    }
+    
+    .card_top{
+        justify-content: flex-start;
+    }
+
+    // SELECTED PLEDGE PRICE //
+    .pledge-price{
+        position: relative;
+        justify-content: space-between;
+        padding-top: 25px;
+    }
+    
+    .pledge-price::before{
+        content: "";
+        position: absolute;
+        width: 696px;
+        background-color: $border-color-dark;
+        height: 2px;
+        left: -25px;
+        top: 0;
+    }
+    
+    input{
+        border: solid 2px $border-color-dark;
+        border-radius: 25px;
+        box-sizing: border-box;
+        height: 50px;
+        width: 100px;
+        margin-right: 20px;
+        text-align: center;
+        outline: none;
+    }
+    
+    input::placeholder{
+        color: $neutral-black;
+        font-weight: 700;
+    }
+    
+    .pledge-price_btn{
+        display: flex;
+    }
+    
+    
+    .pledge-price_input{
+        position: relative;
+    } 
+    
+    .pledge-price_input span{
+        position: absolute;
+        color: $neutral-dark-grey;
+        font-size: 18px;
+        top: 12px;
+        left: 10px;
+    }
+}
+
+.confirmation_wrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    &::before{
+        content: "";
+        background-color: $neutral-dark-grey;
+        opacity: .3;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        bottom: 0;
+    }
+}
+
+.green-border{
+    border: solid 2px $primary-modarate-cyan;
+}
+
+.confirmation{
+    text-align: center;
+    position: fixed;
+    z-index: 1;
+    @include box;
+    width: 400px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+// quand input checked afficher display depuis css
+

@@ -1,0 +1,16 @@
+// color 
+
+$primary-modarate-cyan: hsl(176, 50%, 47%);
+$primary-dark-cyan: hsl(176, 72%, 28%);
+$neutral-black: hsl(0, 0%, 0%);
+$neutral-dark-grey: hsl(0, 0%, 48%);
+$border-color: #F5F5F5;
+$border-color-dark: #EEEEEE;
+$bg-color: #FAFAFA;
+
+
+// progress bar 
+$objectif: 100000;
+$collected: 89914;
+
+$percentage-collected: ($collected / $objectif)*100; 
